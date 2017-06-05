@@ -28,3 +28,5 @@ Applied to any object with a “Display” tag. Sets objects further away to dis
 Some of the tags operate using minimum distance/minimum value/maximum distance/maximum value, scaling the actual reduction value in between the minimum and maximum. Others operate using levels/distance bands, so a particular setting is only applied when between the distances specified by that level.
 
 Please note that at the moment these are all only good with release 18.
+
+http://charlierobin.com/small-far-away
