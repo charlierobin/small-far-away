@@ -1,4 +1,4 @@
-# small-far-away
+# Small, Far Away
 A simple suite of level of detail plug-ins for Cinema 4D. Implemented as tags. Some are applied to any object type, others only work when applied to particular object types, some only work when there is a Cinema 4D “Display” tag applied.
 
 Object Controller Tag
