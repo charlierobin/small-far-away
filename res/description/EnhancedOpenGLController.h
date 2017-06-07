@@ -1,0 +1,14 @@
+#ifndef _EnhancedOpenGLController_H_
+#define _EnhancedOpenGLController_H_
+
+enum
+{
+	SMALL_FAR_AWAY_E_OPENGL_TRACK_OBJECT = 1001,
+	SMALL_FAR_AWAY_E_OPENGL_DISTANCE_DISPLAY = 1002,
+	SMALL_FAR_AWAY_E_OPENGL_MESSAGES = 1004,
+	
+	SMALL_FAR_AWAY_E_OPENGL_DISTANCE = 1107,
+};
+
+#endif
+
