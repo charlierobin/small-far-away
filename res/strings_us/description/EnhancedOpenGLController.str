@@ -1,0 +1,10 @@
+STRINGTABLE EnhancedOpenGLController
+{
+	EnhancedOpenGLController								"Enhanced OpenGL Controller";
+
+	SMALL_FAR_AWAY_E_OPENGL_TRACK_OBJECT						"Tracking object";
+	SMALL_FAR_AWAY_E_OPENGL_DISTANCE_DISPLAY					"Distance";
+	SMALL_FAR_AWAY_E_OPENGL_MESSAGES							"Messages";
+	
+	SMALL_FAR_AWAY_E_OPENGL_DISTANCE							"Distance";
+}

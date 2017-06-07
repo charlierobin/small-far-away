@@ -1,0 +1,13 @@
+STRINGTABLE VisibilityController
+{
+	VisibilityController										"Visibility Controller";
+
+	SMALL_FAR_AWAY_VISIBILITY_TRACK_OBJECT						"Tracking object";
+	SMALL_FAR_AWAY_VISIBILITY_DISTANCE_DISPLAY					"Distance";
+	SMALL_FAR_AWAY_VISIBILITY_MESSAGES							"Messages";
+	
+	SMALL_FAR_AWAY_VISIBILITY_DISTANCE							"Distance";
+	SMALL_FAR_AWAY_VISIBILITY_VISIBILITY_EDITOR					"Visibility in editor";
+	SMALL_FAR_AWAY_VISIBILITY_VISIBILITY_RENDER					"Visibility in renders";
+	SMALL_FAR_AWAY_VISIBILITY_GENERATOR_FLAG					"Generators";
+}

@@ -1,0 +1,14 @@
+STRINGTABLE LevelOfDetailController
+{
+	LevelOfDetailController									"Level of Detail Controller";
+
+	SMALL_FAR_AWAY_LOD_TRACK_OBJECT							"Tracking object";
+	SMALL_FAR_AWAY_LOD_DISTANCE_DISPLAY						"Distance";
+	SMALL_FAR_AWAY_LOD_MESSAGES								"Messages";
+	
+	SMALL_FAR_AWAY_LOD_MIN_DISTANCE							"Minimum distance";
+	SMALL_FAR_AWAY_LOD_MAX_DISTANCE							"Maximum distance";
+	SMALL_FAR_AWAY_LOD_MIN									"Minimum LOD";
+	SMALL_FAR_AWAY_LOD_MAX									"Maximum LOD";
+	SMALL_FAR_AWAY_LOD										"Level of detail";
+}
