@@ -49,7 +49,8 @@ class ControllerBaseClass( c4d.plugins.TagData ):
             
             return None
         
-        self.calculatedDistance = self.Distance( object.GetAbsPos(), tag[ TRACK_OBJECT ].GetAbsPos() )
+        self.calculatedDistance = self.Distance( object.GetMg().off, tag[ TRACK_OBJECT ].GetMg().off )
+        
         tag[ DISTANCE_DISPLAY ] = str( self.calculatedDistance )
         
         return c4d.EXECUTIONRESULT_OK
