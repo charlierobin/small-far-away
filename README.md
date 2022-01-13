@@ -27,13 +27,13 @@ Can be applied to any object type. Turn off generators/visibility as objects get
 
 ## Polygon Reduction Controller
 
-Apply increasingly aggressive polygon reduction strength as distance between object and camera increases. Only works when applied to a Polygon Reduction object.
+Apply increasingly aggressive polygon reduction strength as distance between object and camera increases. Only works when applied to a Polygon Reduction ~~object~~ generator.
 
 ## Texture Controller Tag
 
 Turn off materials/textures as objects get further away from the camera. Needs the Cinema 4D Display tag on the same object/hierarchy.
 
-~~## Enhanced OpenGL Controller Tag~~
+## ~~Enhanced OpenGL Controller Tag~~
 
 ~~Turn off enhanced OpenGL features for objects more than a certain distance away from the camera. Needs the Cinema 4D Display tag on the same object/hierarchy.~~
 
