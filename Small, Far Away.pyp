@@ -32,9 +32,6 @@ from ShadingModeAndStyleController import ShadingModeAndStyleController
 import TextureController
 from TextureController import TextureController
 
-import EnhancedOpenGLController
-from EnhancedOpenGLController import EnhancedOpenGLController
-
 if __name__ == "__main__":
          
     theBitmap = bitmaps.BaseBitmap()
@@ -69,13 +66,6 @@ if __name__ == "__main__":
                                icon = theBitmap,
                                info = c4d.TAG_EXPRESSION | c4d.TAG_VISIBLE )
 
-    plugins.RegisterTagPlugin( id = EnhancedOpenGLController.PLUGIN_ID, 
-                               str = EnhancedOpenGLController.PLUGIN_NAME,
-                               g = EnhancedOpenGLController,
-                               description = "EnhancedOpenGLController", 
-                               icon = theBitmap,
-                               info = c4d.TAG_EXPRESSION | c4d.TAG_VISIBLE )
-        
     if c4d.GetC4DVersion() >= MINIMUM_VERSION_FOR_DYNAMIC_PARAMETERS:
                                
         plugins.RegisterTagPlugin( id = ObjectController.PLUGIN_ID, 
@@ -101,5 +91,6 @@ if __name__ == "__main__":
                                    
     else:
     
-        print "An important message from Small, Far Away:"
-        print "The Object Controller, Instance Controller and Shading Mode/Style Controller require R18 or later"
+        print( "An important message from Small, Far Away:" )
+        print( "The Object Controller, Instance Controller and Shading Mode/Style Controller require R18 or later" )
+        

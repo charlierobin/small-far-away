@@ -8,6 +8,9 @@ class PolygonReductionController( ControllerBaseClass.ControllerBaseClass ):
     PLUGIN_NAME = "Polygon Reduction Controller"
     PLUGIN_ID = 1039266
     
+    OPOLYREDUX = 465002101
+    STRENGTH = 1000
+    
     def Init( self, node ):
         
         result = super( PolygonReductionController, self ).Init( node )
@@ -25,10 +28,11 @@ class PolygonReductionController( ControllerBaseClass.ControllerBaseClass ):
     def Execute( self, tag, doc, object, bt, priority, flags ):
         
         result = super( PolygonReductionController, self ).Execute( tag, doc, object, bt, priority, flags )
+        
         if result != c4d.EXECUTIONRESULT_OK: return c4d.EXECUTIONRESULT_OK
         
-        if object.GetType() != c4d.Opolyreduction:
-            self.MessageToUser( tag, "This tag only works when applied to Polygon Reduction objects" )
+        if object.GetType() != OPOLYREDUX:
+            self.MessageToUser( tag, "This tag only works when applied to Polygon Reduction generators" )
             return c4d.EXECUTIONRESULT_OK
         
         if self.calculatedDistance <= tag[ c4d.SMALL_FAR_AWAY_POLYGON_REDUCTION_MIN_DISTANCE ]: 
@@ -46,7 +50,7 @@ class PolygonReductionController( ControllerBaseClass.ControllerBaseClass ):
         
         tag[ c4d.SMALL_FAR_AWAY_POLYGON_REDUCTION_REDUCTION_STRENGTH ] = str( reductionStrength )
         
-        object[ c4d.POLYREDUCTIONOBJECT_STRENGTH ] = reductionStrength
+        object[ STRENGTH ] = reductionStrength
         
         return c4d.EXECUTIONRESULT_OK
     

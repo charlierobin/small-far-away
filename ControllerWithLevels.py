@@ -48,13 +48,15 @@ class ControllerWithLevels( ControllerBaseClass.ControllerBaseClass ):
 
     def NumberOfLevels( self ):
         
-        return len( self.parameterArrays.values()[ 0 ] )  # what if none specified? - out of bounds
+        values = self.parameterArrays.values()
+        
+        return len( list(values)[ 0 ] )  # what if none specified? - out of bounds
 
     def GetLevel( self ):
     
         highestIndex = -1
         
-        for index in xrange( self.NumberOfLevels() ):
+        for index in range( self.NumberOfLevels() ):
             if self.calculatedDistance > self.parameterArrays[ DISTANCES ][ index ]:
                 highestIndex = index
     
@@ -66,7 +68,7 @@ class ControllerWithLevels( ControllerBaseClass.ControllerBaseClass ):
 
     def CopyTo( self, dest, snode, dnode, flags, trn ):
 
-        for name, array in self.parameterArrays.iteritems(): dest.parameterArrays[ name ] = copy.copy( array )
+        for name, array in self.parameterArrays.items(): dest.parameterArrays[ name ] = copy.copy( array )
         return True
         
     def Read( self, node, hf, level ):
@@ -76,7 +78,7 @@ class ControllerWithLevels( ControllerBaseClass.ControllerBaseClass ):
         
         numberOfParameters = hf.ReadInt32()
 
-        for idx in xrange( numberOfParameters ):
+        for idx in range( numberOfParameters ):
 
             name = hf.ReadString()
             type = hf.ReadString()
@@ -84,11 +86,11 @@ class ControllerWithLevels( ControllerBaseClass.ControllerBaseClass ):
             count = hf.ReadInt32()
 
             if type == TYPE_FLOAT32:
-                for idx in xrange( count ): array.append( hf.ReadFloat32() )
+                for idx in range( count ): array.append( hf.ReadFloat32() )
             elif type == TYPE_LONG:
-                for idx in xrange( count ): array.append( hf.ReadInt32() )
+                for idx in range( count ): array.append( hf.ReadInt32() )
             else:
-                for idx in xrange( count ): array.append( hf.ReadString() )
+                for idx in range( count ): array.append( hf.ReadString() )
                 
             self.parameterArrays[ name ] = array
             self.parameterTypes[ name ] = type
@@ -100,7 +102,7 @@ class ControllerWithLevels( ControllerBaseClass.ControllerBaseClass ):
         numberOfParameters = len( self.parameterArrays )
         hf.WriteInt32( numberOfParameters )
         
-        for name, array in self.parameterArrays.iteritems():
+        for name, array in self.parameterArrays.items():
         
             hf.WriteString( name )
             hf.WriteString( self.parameterTypes[ name ] )
@@ -124,7 +126,7 @@ class ControllerWithLevels( ControllerBaseClass.ControllerBaseClass ):
 
         paramID = id[ 0 ].id
 
-        for name, array in self.parameterIDArrays.iteritems():
+        for name, array in self.parameterIDArrays.items():
 
             if paramID in array:
             
@@ -137,7 +139,7 @@ class ControllerWithLevels( ControllerBaseClass.ControllerBaseClass ):
 
         paramID = id[ 0 ].id
     
-        for name, array in self.parameterIDArrays.iteritems():
+        for name, array in self.parameterIDArrays.items():
 
             if paramID in array:
             
@@ -160,7 +162,7 @@ class ControllerWithLevels( ControllerBaseClass.ControllerBaseClass ):
                 i1 = 1 + self.upButtonsParameterIDs.index( paramID )
                 i2 = i1 - 1
                
-                for name, array in self.parameterArrays.iteritems():
+                for name, array in self.parameterArrays.items():
                     if name != DISTANCES: array[ i1 ], array[ i2 ] = array[ i2 ], array[ i1 ]
                 
             if paramID in self.downButtonsParameterIDs:
@@ -168,12 +170,12 @@ class ControllerWithLevels( ControllerBaseClass.ControllerBaseClass ):
                 i1 = self.downButtonsParameterIDs.index( paramID )
                 i2 = i1 + 1
             
-                for name, array in self.parameterArrays.iteritems():
+                for name, array in self.parameterArrays.items():
                     if name != DISTANCES: array[ i1 ], array[ i2 ] = array[ i2 ], array[ i1 ]
               
             if paramID in self.deleteButtonsParameterIDs:
     
-                for name, array in self.parameterArrays.iteritems():
+                for name, array in self.parameterArrays.items():
                     del array[ self.deleteButtonsParameterIDs.index( paramID ) ]
                 
                 self.MessageToUser( node, "Item removed" )
@@ -279,13 +281,13 @@ class ControllerWithLevels( ControllerBaseClass.ControllerBaseClass ):
 
         self.parameterIDArrays = {}
         
-        for name, array in self.parameterArrays.iteritems(): self.parameterIDArrays[ name ] = []
+        for name, array in self.parameterArrays.items(): self.parameterIDArrays[ name ] = []
         
         self.deleteButtonsParameterIDs = []
         self.upButtonsParameterIDs = []
         self.downButtonsParameterIDs = []
 
-        for index in xrange( self.NumberOfLevels() ):
+        for index in range( self.NumberOfLevels() ):
 
             sliderMin = 0.0
             sliderMax = SLIDER_DEFAULT_MAX
