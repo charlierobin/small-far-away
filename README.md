@@ -5,13 +5,13 @@ A simple suite of level of detail plug-ins for Cinema 4D. Implemented as tags. S
 
 At some point the previous versions of these will have stopped working when Cinema 4D went from Python 2 to Python 3.
 
-I’ve now updated them (basically, some small changes to do with Python iterators/dicts) and tested with my version of Cinema 4D R25.117 on Macintosh.
+I’ve now updated them (basically, some small changes mostly to do with Python iterators/dicts) and tested with my version of Cinema 4D R25.117 on Macintosh.
 
 The EnhancedOpenGLController is no more, as Enhanced OpenGL is no longer a thing in Cinema 4D.
 
 The Polygon Reduction tag used to work with the reduction deformer, but that is also no longer around, so I've changed it to work with the Polygon Reduction Generator instead.
 
-As mentioned, I’m only able to test this on my system and with the version of Cinema 4D which I’m using, which means I’ve no idea what the impact will be on older releases.
+**As mentioned, I’m only able to test this on my system and with the version of Cinema 4D which I’m using, which means I’ve no idea what the impact will be on older releases.**
 
 ## Object Controller Tag
 
