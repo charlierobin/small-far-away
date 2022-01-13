@@ -1,6 +1,18 @@
 # Small, Far Away
 A simple suite of level of detail plug-ins for Cinema 4D. Implemented as tags. Some are applied to any object type, others only work when applied to particular object types, some only work when there is a Cinema 4D “Display” tag applied.
 
+## New notes as of January 2022:
+
+At some point the previous versions of these will have stopped working when Cinema 4D went from Python 2 to Python 3.
+
+I’ve now updated them (basically, some small changes to do with Python iterators/dicts) and tested with my version of Cinema 4D R25.117 on Macintosh.
+
+The EnhancedOpenGLController is no more, as Enhanced OpenGL is no longer a thing in Cinema 4D.
+
+The Polygon Reduction tag used to work with the reduction deformer, but that is also no longer around, so I've changed it to work with the Polygon Reduction Generator instead.
+
+As mentioned, I’m only able to test this on my system and with the version of Cinema 4D which I’m using, which means I’ve no idea what the impact will be on older releases.
+
 ## Object Controller Tag
 
 Swaps out higher polygon count objects and replaces them with lower count versions. Can be applied to any object type.
@@ -34,9 +46,5 @@ Also requires the Cinema 4D Display tag on the same object/hierarchy. Allows sim
 Applied to any object with a “Display” tag. Sets objects further away to display with a lower level of detail.
 
 Some of the tags operate using minimum distance/minimum value/maximum distance/maximum value, scaling the actual reduction value in between the minimum and maximum. Others operate using levels/distance bands, so a particular setting is only applied when between the distances specified by that level.
-
-
-Please note that at the moment these are all only good with release 18.
-
 
 http://charlierobin.com/small-far-away
