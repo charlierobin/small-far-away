@@ -26,28 +26,26 @@ class ControllerBaseClass( c4d.plugins.TagData ):
             
             pd.SetPriorityValue( c4d.PRIORITYVALUE_CAMERADEPENDENT, True )
             node[ c4d.EXPRESSION_PRIORITY ] = pd        
-    
-        # TODO ... default ... put active camera into tracking object?
-    
+        
         return True
     
     def Execute( self, tag, doc, object, bt, priority, flags ):
         
         self.ClearUserMessages( tag )
         
- #        bd = doc.GetActiveBaseDraw()
-#         camera = bd.GetSceneCamera( doc )
-#         print camera
-        
         if not tag[ TRACK_OBJECT ]:
             
-            tag[ DISTANCE_DISPLAY ] = "(please set a tracking object)"
+            tag[ TRACK_OBJECT ] = self.FindFirstTopLevelObjectCalled("Camera", doc)
             
-            # must return c4d.EXECUTIONRESULT_OK or a couple of other options from Execute,
-            # but this method always overriden by subclasses, they use None to tell if track object
-            # not set, skip if not. They return c4d.EXECUTIONRESULT_OK
-            
-            return None
+            if not tag[ TRACK_OBJECT ]:
+                
+                tag[ DISTANCE_DISPLAY ] = "(please set a tracking object - usually a camera, but can be anything)"
+                
+                # must return c4d.EXECUTIONRESULT_OK or a couple of other options from Execute,
+                # but this method always overriden by subclasses, they use None to tell if track object
+                # not set, skip if not. They return c4d.EXECUTIONRESULT_OK
+                
+                return None
         
         self.calculatedDistance = self.Distance( object.GetMg().off, tag[ TRACK_OBJECT ].GetMg().off )
         
@@ -75,7 +73,7 @@ class ControllerBaseClass( c4d.plugins.TagData ):
     
     def FindFirstTopLevelObjectCalled( self, searchString, doc ):
     
-        # TODO check out BaseDocument.SearchObject( name )  ??
+        # TODO check out BaseDocument.SearchObject( name )
     
         found = None
         nextObject = doc.GetFirstObject()

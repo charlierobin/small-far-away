@@ -8,8 +8,7 @@ class PolygonReductionController( ControllerBaseClass.ControllerBaseClass ):
     PLUGIN_NAME = "Polygon Reduction Controller"
     PLUGIN_ID = 1039266
     
-    OPOLYREDUX = 465002101
-    STRENGTH = 1000
+    POLYREDUX = 465002101
     
     def Init( self, node ):
         
@@ -31,7 +30,7 @@ class PolygonReductionController( ControllerBaseClass.ControllerBaseClass ):
         
         if result != c4d.EXECUTIONRESULT_OK: return c4d.EXECUTIONRESULT_OK
         
-        if object.GetType() != OPOLYREDUX:
+        if object.GetType() != self.POLYREDUX:
             self.MessageToUser( tag, "This tag only works when applied to Polygon Reduction generators" )
             return c4d.EXECUTIONRESULT_OK
         
@@ -50,7 +49,7 @@ class PolygonReductionController( ControllerBaseClass.ControllerBaseClass ):
         
         tag[ c4d.SMALL_FAR_AWAY_POLYGON_REDUCTION_REDUCTION_STRENGTH ] = str( reductionStrength )
         
-        object[ STRENGTH ] = reductionStrength
+        object[ c4d.POLYREDUXOBJECT_STRENGTH ] = reductionStrength
         
         return c4d.EXECUTIONRESULT_OK
     

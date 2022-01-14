@@ -44,7 +44,21 @@ class LevelOfDetailController( ControllerBaseClass.ControllerBaseClass ):
         displayTag = self.GetFirstTagOfType( object, c4d.Tdisplay )
         
         if displayTag is None:
-            self.MessageToUser( tag, "This tag only works when applied to an object with a Display tag on it (and which has “Level of Detail” enabled)" )
+            
+            # self.MessageToUser( tag, "This tag only works when applied to an object with a Display tag on it (and which has “Level of Detail” enabled)" )
+            
+            doc.StartUndo()
+            
+            object.MakeTag(c4d.Tdisplay)
+            
+            displayTag = self.GetFirstTagOfType( object, c4d.Tdisplay )
+            
+            displayTag[ c4d.DISPLAYTAG_AFFECT_LEVELOFDETAIL ] = True
+            
+            c4d.EventAdd()
+            
+            doc.EndUndo()
+            
         else:
             if not displayTag[ c4d.DISPLAYTAG_AFFECT_LEVELOFDETAIL ]:
                 self.MessageToUser( tag, "The Display tag does not have “Level of Detail” enabled – you won’t see anything unless you turn this on" )

@@ -23,7 +23,21 @@ class TextureController( ControllerBaseClass.ControllerBaseClass ):
         displayTag = self.GetFirstTagOfType( object, c4d.Tdisplay )
         
         if displayTag is None:
-            self.MessageToUser( tag, "This tag only works when applied to an object with a Display tag on it" )
+            
+            # self.MessageToUser( tag, "This tag only works when applied to an object with a Display tag on it" )
+            
+            doc.StartUndo()
+            
+            object.MakeTag(c4d.Tdisplay)
+            
+            displayTag = self.GetFirstTagOfType( object, c4d.Tdisplay )
+            
+            displayTag[ c4d.DISPLAYTAG_AFFECT_TEXTURES ] = True
+            
+            c4d.EventAdd()
+            
+            doc.EndUndo()
+            
         else:
             if not displayTag[ c4d.DISPLAYTAG_AFFECT_TEXTURES ]:
                 self.MessageToUser( tag, "The Display tag does not have “Use Textures” option enabled – you won’t see anything unless you turn this on" )

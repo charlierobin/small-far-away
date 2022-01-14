@@ -1,10 +1,6 @@
 import c4d, copy, os, sys, math, re
 from c4d import bitmaps, documents, plugins
 
-# written by charlie robin / charlierobin.com / 2017
-
-MINIMUM_VERSION_FOR_DYNAMIC_PARAMETERS = 18000
-
 # path = c4d.storage.GeGetC4DPath( c4d.C4D_PATH_PREFS ) + "/symbolcache"
 # if os.path.exists( path ): os.remove( path )
 
@@ -65,32 +61,26 @@ if __name__ == "__main__":
                                description = "TextureController", 
                                icon = theBitmap,
                                info = c4d.TAG_EXPRESSION | c4d.TAG_VISIBLE )
-
-    if c4d.GetC4DVersion() >= MINIMUM_VERSION_FOR_DYNAMIC_PARAMETERS:
                                
-        plugins.RegisterTagPlugin( id = ObjectController.PLUGIN_ID, 
-                                   str = ObjectController.PLUGIN_NAME,
-                                   g = ObjectController,
-                                   description = "ObjectController", 
-                                   icon = theBitmap,
-                                   info = c4d.TAG_EXPRESSION | c4d.TAG_VISIBLE | c4d.TAG_MULTIPLE )
-                               
-        plugins.RegisterTagPlugin( id = InstanceController.PLUGIN_ID, 
-                                   str = InstanceController.PLUGIN_NAME,
-                                   g = InstanceController,
-                                   description = "InstanceController", 
-                                   icon = theBitmap,
-                                   info = c4d.TAG_EXPRESSION | c4d.TAG_VISIBLE )
-                                       
-        plugins.RegisterTagPlugin( id = ShadingModeAndStyleController.PLUGIN_ID, 
-                                   str = ShadingModeAndStyleController.PLUGIN_NAME,
-                                   g = ShadingModeAndStyleController,
-                                   description = "ShadingModeAndStyleController", 
-                                   icon = theBitmap,
-                                   info = c4d.TAG_EXPRESSION | c4d.TAG_VISIBLE )
+    plugins.RegisterTagPlugin( id = ObjectController.PLUGIN_ID, 
+                               str = ObjectController.PLUGIN_NAME,
+                               g = ObjectController,
+                               description = "ObjectController", 
+                               icon = theBitmap,
+                               info = c4d.TAG_EXPRESSION | c4d.TAG_VISIBLE | c4d.TAG_MULTIPLE )
+                           
+    plugins.RegisterTagPlugin( id = InstanceController.PLUGIN_ID, 
+                               str = InstanceController.PLUGIN_NAME,
+                               g = InstanceController,
+                               description = "InstanceController", 
+                               icon = theBitmap,
+                               info = c4d.TAG_EXPRESSION | c4d.TAG_VISIBLE )
                                    
-    else:
-    
-        print( "An important message from Small, Far Away:" )
-        print( "The Object Controller, Instance Controller and Shading Mode/Style Controller require R18 or later" )
-        
+    plugins.RegisterTagPlugin( id = ShadingModeAndStyleController.PLUGIN_ID, 
+                               str = ShadingModeAndStyleController.PLUGIN_NAME,
+                               g = ShadingModeAndStyleController,
+                               description = "ShadingModeAndStyleController", 
+                               icon = theBitmap,
+                               info = c4d.TAG_EXPRESSION | c4d.TAG_VISIBLE )
+                                   
+   
